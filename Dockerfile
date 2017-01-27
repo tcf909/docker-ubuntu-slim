@@ -21,7 +21,7 @@ COPY runlevel /sbin/runlevel
 RUN apt-mark hold apt gnupg adduser passwd libsemanage1
 
 # dpkg --get-selections | grep -v deinstall
-RUN echo "Yes, do as I say!" | apt-get purge \
+RUN echo "Yes, do as I say!" | apt-get purge --allow-remove-essential \
     libcap2-bin \
     libkmod2 \
     libsmartcols1 \
