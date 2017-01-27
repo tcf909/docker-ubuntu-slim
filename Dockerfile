@@ -1,11 +1,19 @@
 FROM ubuntu:16.04
 
 ENV DEBIAN_FRONTEND=noninteractive
+ENV TERM=xterm-color
+RUN printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";\n' > /etc/apt/apt.conf.d/99defaults
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
-RUN apt-get update \
-    && apt-get dist-upgrade -y
+RUN packages="curl ca-certificates libssl1.0.0" && \
+    apt-get update && \
+    apt-get install ${packages} && \
+    curl -L https://iterm2.com/misc/install_shell_integration_and_utilities.sh | /bin/bash && \
+    apt-get remove ${packages} && \
+    apt-get autoremove && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 COPY runlevel /sbin/runlevel
 
