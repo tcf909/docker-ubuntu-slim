@@ -33,3 +33,5 @@ RUN packages="curl ca-certificates libssl1.0.0" && \
         /usr/share/man/man3 /usr/share/man/man4 \
         /usr/share/man/man5 /usr/share/man/man6 \
         /usr/share/man/man7 /usr/share/man/man8
+
+CMD ["/sbin/my_init"]
