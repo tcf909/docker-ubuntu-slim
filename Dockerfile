@@ -8,6 +8,7 @@ COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
 RUN packages="curl ca-certificates libssl1.0.0" && \
     apt-get update && \
+    apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
     apt-get install ${packages} && \
     curl -L https://iterm2.com/misc/install_shell_integration_and_utilities.sh | /bin/bash && \
     apt-get remove ${packages} && \
@@ -19,6 +20,8 @@ RUN packages="curl ca-certificates libssl1.0.0" && \
         /usr/share/man \
         /usr/share/info \
         /usr/share/locale \
+        /tmp/* \
+        /var/tmp/* \
         /var/lib/apt/lists/* \
         /var/log/* \
         /var/cache/debconf/* \
