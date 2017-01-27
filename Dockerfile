@@ -11,7 +11,6 @@ RUN packages="curl ca-certificates libssl1.0.0" && \
     apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
     apt-get install ${packages} && \
     curl -L https://iterm2.com/misc/install_shell_integration_and_utilities.sh | /bin/bash && \
-    apt-get remove ${packages} && \
     apt-get autoremove && \
     apt-get clean && \
     tar -czf /usr/share/copyrights.tar.gz /usr/share/common-licenses /usr/share/doc/*/copyright && \
