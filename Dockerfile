@@ -25,7 +25,6 @@ RUN packages="curl ca-certificates libssl1.0.0" && \
         /var/log/* \
         /var/cache/debconf/* \
         /usr/share/common-licenses* \
-        ~/.bashrc \
         /etc/systemd \
         /lib/lsb \
         /lib/udev \
