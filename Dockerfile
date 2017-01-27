@@ -6,10 +6,11 @@ RUN printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT:
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
-RUN packages="curl ca-certificates libssl1.0.0" && \
+RUN packages="curl ca-certificates libssl1.0.0 vim" && \
     apt-get update && \
     apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
     apt-get install ${packages} && \
+    apt-get remove vim-tiny && \
     curl -L https://iterm2.com/misc/install_shell_integration_and_utilities.sh | /bin/bash && \
     apt-get autoremove && \
     apt-get clean && \
