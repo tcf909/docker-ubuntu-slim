@@ -6,7 +6,7 @@ RUN printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT:
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
-RUN packages="curl ca-certificates libssl1.0.0 vim rsync" && \
+RUN packages="curl ca-certificates libssl1.0.0 vim" && \
     apt-get update && \
     apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
     apt-get install ${packages} && \
