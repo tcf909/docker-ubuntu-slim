@@ -3,13 +3,12 @@ FROM phusion/baseimage:latest
 ARG DEBUG=false
 ENV DEBUG=${DEBUG:-false}
 
-ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm-color
 RUN printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";\n' > /etc/apt/apt.conf.d/99defaults
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
-RUN packages="curl ca-certificates libssl1.0.0 vim" && \
+RUN packages="curl wget ca-certificates libssl1.0.0 vim" && \
     apt-get update && \
     apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
     apt-get install ${packages} && \
