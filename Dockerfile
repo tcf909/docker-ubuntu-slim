@@ -1,5 +1,8 @@
 FROM phusion/baseimage:latest
 
+ARG DEBUG=false
+ENV DEBUG=${DEBUG:-false}
+
 ENV DEBIAN_FRONTEND=noninteractive
 ENV TERM=xterm-color
 RUN printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";\n' > /etc/apt/apt.conf.d/99defaults
