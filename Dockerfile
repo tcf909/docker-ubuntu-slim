@@ -5,13 +5,12 @@ ENV DEBUG=${DEBUG:-false}
 
 ENV TERM=xterm-color
 ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 RUN printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";\n' > /etc/apt/apt.conf.d/99defaults
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
 # apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
-
-RUN echo "en_US.UTF-8 UTF-8" > /var/lib/locales/supported.d/en && \
 
 RUN packages="curl wget ca-certificates libssl1.0.0 vim" && \
     apt-get update && \
@@ -21,6 +20,8 @@ RUN packages="curl wget ca-certificates libssl1.0.0 vim" && \
     curl -L https://iterm2.com/misc/install_shell_integration_and_utilities.sh | /bin/bash && \
     apt-get autoremove && \
     apt-get clean && \
+    locale-gen en_US.UTF-8 && \
+    update-locale LANG=en_US.UTF-8 && \
     tar -czf /usr/share/copyrights.tar.gz /usr/share/common-licenses /usr/share/doc/*/copyright && \
     rm -rf \
         /usr/share/doc \
