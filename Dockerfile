@@ -9,8 +9,6 @@ ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
-# apt-get upgrade -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" && \
-
 RUN packages="curl wget ca-certificates libssl1.0.0 vim" && \
     printf 'APT::Get::Assume-Yes "true";\nAPT::Install-Recommends "false";\nAPT::Get::Install-Suggests "false";\n' > /etc/apt/apt.conf.d/99defaults && \
     apt-get update && \
