@@ -1,11 +1,10 @@
 FROM phusion/baseimage:latest
 
 ARG DEBUG=false
-ARG DEBIAN_FRONTEND=noninteractive
+ARG DEBIAN_FRONTEND="noninteractive"
 
 ENV DEBUG=${DEBUG:-false}
-ENV TERM=xterm-color
-ENV LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
+ENV TERM="xterm-color" LANG='en_US.UTF-8' LANGUAGE='en_US:en' LC_ALL='en_US.UTF-8'
 
 COPY excludes /etc/dpkg/dpkg.cfg.d/excludes
 
