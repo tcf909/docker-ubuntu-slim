@@ -19,26 +19,26 @@ RUN packages="curl wget ca-certificates libssl1.0.0 vim" && \
     apt-get autoremove && \
     apt-get clean && \
     locale-gen en_US.UTF-8 && \
-    update-locale LANG=en_US.UTF-8
-    #tar -czf /usr/share/copyrights.tar.gz /usr/share/common-licenses /usr/share/doc/*/copyright && \
-#    rm -rf \
-#        /usr/share/doc \
-#        /usr/share/man \
-#        /usr/share/info \
-#        /tmp/* \
-#        /var/tmp/* \
-#        /var/lib/apt/lists/* \
-#        /var/log/* \
-#        /var/cache/debconf/* \
-#        /usr/share/common-licenses* \
-#        /etc/systemd \
-#        /lib/lsb \
-#        /lib/udev \
-#        /usr/lib/x86_64-linux-gnu/gconv/IBM* \
-#        /usr/lib/x86_64-linux-gnu/gconv/EBC* && \
-#    mkdir -p /usr/share/man/man1 /usr/share/man/man2 \
-#        /usr/share/man/man3 /usr/share/man/man4 \
-#        /usr/share/man/man5 /usr/share/man/man6 \
-#        /usr/share/man/man7 /usr/share/man/man8
+    update-locale LANG=en_US.UTF-8 && \
+    tar -czf /usr/share/copyrights.tar.gz /usr/share/common-licenses /usr/share/doc/*/copyright && \
+    rm -rf \
+        /usr/share/doc \
+        /usr/share/man \
+        /usr/share/info \
+        /tmp/* \
+        /var/tmp/* \
+        /var/lib/apt/lists/* \
+        /var/log/* \
+        /var/cache/debconf/* \
+        /usr/share/common-licenses* \
+        /etc/systemd \
+        /lib/lsb \
+        /lib/udev \
+        /usr/lib/x86_64-linux-gnu/gconv/IBM* \
+        /usr/lib/x86_64-linux-gnu/gconv/EBC* && \
+    mkdir -p /usr/share/man/man1 /usr/share/man/man2 \
+        /usr/share/man/man3 /usr/share/man/man4 \
+        /usr/share/man/man5 /usr/share/man/man6 \
+        /usr/share/man/man7 /usr/share/man/man8
 
 CMD ["/sbin/my_init"]
